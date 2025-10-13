@@ -64,6 +64,11 @@ void liberarTLDEPrestamos(TLDEPrestamos &ldePrestamos){
     ldePrestamos = NULL;
 }
 
+void liberarTLDEPrestamosSoloEstructura(TLDEPrestamos &ldePrestamos){
+    delete ldePrestamos;
+    ldePrestamos = NULL;
+}
+
 void imprimirTLDEPrestamos(TLDEPrestamos ldePrestamos){
     printf ("LDE Préstamos:\n");
     nodoDoble* actual;

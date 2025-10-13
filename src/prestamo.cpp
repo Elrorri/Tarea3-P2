@@ -38,6 +38,11 @@ void liberarTPrestamo(TPrestamo &prestamo){
   prestamo = NULL;
 }
 
+void liberarTPrestamosSoloEstructura(TPrestamo &prestamo){
+  delete prestamo;
+  prestamo = NULL;
+}
+
 TSocio socioTPrestamo(TPrestamo prestamo){
   TSocio socio = (prestamo->socio);
   return socio;
