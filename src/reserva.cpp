@@ -13,7 +13,6 @@ TReserva crearTReserva(TSocio socio, TLibro libro){
   return nueva; }
 
 void imprimirTReserva(TReserva reserva){
-  // Reserva de libro <titulo libro> por <nombre socio> <apellido socio>.
   printf ("Reserva de libro %s por %s %s.\n", tituloTLibro(reserva->libro),nombreTSocio(reserva->socio),apellidoTSocio(reserva->socio));
 }
 
@@ -25,16 +24,25 @@ void liberarTReserva(TReserva &reserva){
 }
 
 TSocio socioTReserva(TReserva reserva){
-  return NULL;
+  TSocio devolver = reserva->socio;
+  return devolver;
 }
 
 TLibro libroTReserva(TReserva reserva){
-  return NULL;
+  TLibro devolver = reserva->libro;
+  return devolver;
 }
 
 TReserva copiarTReserva(TReserva reserva){
-  return NULL;
+  TReserva copia = new rep_reserva;
+  TSocio CSocio = copiarTSocio(reserva->socio);
+  TLibro CLibro = copiarTLibro(reserva->libro);
+  copia->libro=CLibro;
+  copia->socio=CSocio;
+  return copia;
 }
 
 void liberarTReservaSoloEstructura(TReserva &reserva) {
+  delete reserva;
+  reserva = NULL;
 }
