@@ -1,0 +1,20 @@
+0a1,15
+> ==11959== Conditional jump or move depends on uninitialised value(s)
+> ==11959==    at 0x406C45: imprimirTConjuntoGeneros(rep_conjuntogeneros*) (conjuntoGeneros.cpp:61)
+> ==11959==    by 0x404323: main_unionConjuntoGeneros(rep_conjuntogeneros*) (principal.cpp:1489)
+> ==11959==    by 0x40178A: main (principal.cpp:527)
+> ==11959== 
+> ==11959== Conditional jump or move depends on uninitialised value(s)
+> ==11959==    at 0x406C45: imprimirTConjuntoGeneros(rep_conjuntogeneros*) (conjuntoGeneros.cpp:61)
+> ==11959==    by 0x404387: main_interseccionConjuntoGeneros(rep_conjuntogeneros*) (principal.cpp:1500)
+> ==11959==    by 0x4017B3: main (principal.cpp:529)
+> ==11959== 
+> ==11959== Conditional jump or move depends on uninitialised value(s)
+> ==11959==    at 0x406C45: imprimirTConjuntoGeneros(rep_conjuntogeneros*) (conjuntoGeneros.cpp:61)
+> ==11959==    by 0x4043EB: main_diferenciaConjuntoGeneros(rep_conjuntogeneros*) (principal.cpp:1511)
+> ==11959==    by 0x4017DC: main (principal.cpp:531)
+> ==11959== 
+26c41
+< 0 2 7 8 9
+---
+> 0 2 4 5 7 8 9
