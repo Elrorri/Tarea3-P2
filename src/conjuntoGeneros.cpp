@@ -2,7 +2,7 @@
 
 struct rep_conjuntogeneros{
   int cantMax;
-  int ids[1000]; 
+  int ids[1000000]; 
   int cardinal;
 };
 
@@ -73,31 +73,39 @@ void liberarTConjuntoGeneros(TConjuntoGeneros &c){
   c = NULL; 
 }
 
+void InicializarCG (TConjuntoGeneros q){
+  q->cardinal=0;
+  for (int i=0;i<q->cantMax;i++){
+    q->ids[i]=0;
+  }
+}
+
 TConjuntoGeneros unionTConjuntoGeneros(TConjuntoGeneros c1, TConjuntoGeneros c2){
   TConjuntoGeneros un = new rep_conjuntogeneros;
-  un->cardinal=0;
   if (c1->cantMax>=c2->cantMax ){
     un->cantMax=c1->cantMax;
   }else{
     un->cantMax=c2->cantMax;
   }
+  InicializarCG(un);
   for (int i=0;i<un->cantMax;i++){
     if (c1->ids[i]==1||c2->ids[i]==1){
       un->ids[i]=1;
       un->cardinal++;
     }
-  }
+  } 
   return un;
 }
 
 TConjuntoGeneros interseccionTConjuntoGeneros(TConjuntoGeneros c1, TConjuntoGeneros c2){
   TConjuntoGeneros in = new rep_conjuntogeneros;
-  in->cardinal=0;
   if (c1->cantMax>=c2->cantMax ){
     in->cantMax=c1->cantMax;
   }else{
     in->cantMax=c2->cantMax;
   }
+
+  InicializarCG(in);
   for (int i=0;i<in->cantMax;i++){
     if (c1->ids[i]==1&&c2->ids[i]==1){
       in->ids[i]=1;
@@ -109,14 +117,14 @@ TConjuntoGeneros interseccionTConjuntoGeneros(TConjuntoGeneros c1, TConjuntoGene
 
 TConjuntoGeneros diferenciaTConjuntoGeneros(TConjuntoGeneros c1, TConjuntoGeneros c2){
   TConjuntoGeneros dif = new rep_conjuntogeneros;
-  dif->cardinal=0;
   if (c1->cantMax>=c2->cantMax ){
     dif->cantMax=c1->cantMax;
   }else{
     dif->cantMax=c2->cantMax;
   }
+  InicializarCG(dif);
   for (int i=0;i<dif->cantMax;i++){
-    if (c1->ids[i]!=c2->ids[i]){
+    if (c1->ids[i]==1 && c2->ids[i]==0){
       dif->ids[i]=1;
       dif->cardinal++;
     }
