@@ -4,6 +4,10 @@
 
 
 struct rep_agGeneros {
+  int id;
+  char nombreGenero;
+  TAGGeneros SigHermano;
+  TAGGeneros SigHijo;
 };
 
 TAGGeneros crearTAGGeneros(){
