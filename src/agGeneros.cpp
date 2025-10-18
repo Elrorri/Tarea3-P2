@@ -18,9 +18,18 @@ void insertarGeneroTAGGeneros(TAGGeneros &arbolGeneros, int idGeneroPadre, int i
 }
 
 void imprimirTAGGeneros(TAGGeneros arbolGeneros){
+  if (arbolGeneros!=NULL){
+    printf("%d - %s",arbolGeneros->id,arbolGeneros->nombreGenero);
+    if (arbolGeneros->SigHijo!=NULL){
+      printf("\n");
+      imprimirTAGGeneros(arbolGeneros->SigHijo);
+    }
+    imprimirTAGGeneros(arbolGeneros->SigHermano);
+  }
 }
-
 void liberarTAGGeneros(TAGGeneros &arbolGeneros){
+  delete arbolGeneros;
+  arbolGeneros = NULL;
 }
 
 bool existeGeneroTAGGeneros(TAGGeneros arbolGeneros, int idGenero){
