@@ -1,0 +1,78 @@
+2,3c2
+< 2>Árbol de géneros:
+< 3>Se ejecutó 'insertarGeneroTAGGeneros' con idGeneroPadre -1 e idGenero 18.
+---
+> 2>3>Se ejecutó 'insertarGeneroTAGGeneros' con idGeneroPadre -1 e idGenero 18.
+9,15c8,13
+< 9>Árbol de géneros:
+< 18 - Terror
+<     24 - Accion
+<     23 - Comedia
+<     22 - Drama
+<         16 - Comedia
+<         15 - Comedia
+---
+> 9>18 - Terror
+>  22- Drama
+>   15 Comedia
+>   16 Comedia
+>  23- Comedia
+>  24- Accion
+22,34c20,31
+< 16>Árbol de géneros:
+< 18 - Terror
+<     24 - Accion
+<     23 - Comedia
+<         48 - Comedia
+<         44 - Historica
+<             100 - Terror
+<         41 - Romance
+<             88 - Drama
+<         40 - Historica
+<     22 - Drama
+<         16 - Comedia
+<         15 - Comedia
+---
+> 16>18 - Terror
+>  22- Drama
+>   15 Comedia
+>   16 Comedia
+>  23- Comedia
+>   40 Historica
+>   41 Romance
+>    88 Drama
+>   44 Historica
+>    100 Terror
+>   48 Comedia
+>  24- Accion
+37,51c34,47
+< 19>Árbol de géneros:
+< 18 - Terror
+<     24 - Accion
+<     23 - Comedia
+<         48 - Comedia
+<         44 - Historica
+<             100 - Terror
+<                 101 - Terror
+<                     102 - Historica
+<         41 - Romance
+<             88 - Drama
+<         40 - Historica
+<     22 - Drama
+<         16 - Comedia
+<         15 - Comedia
+---
+> 19>18 - Terror
+>  22- Drama
+>   15 Comedia
+>   16 Comedia
+>  23- Comedia
+>   40 Historica
+>   41 Romance
+>    88 Drama
+>   44 Historica
+>    100 Terror
+>     101 Terror
+>      102 Historica
+>   48 Comedia
+>  24- Accion
