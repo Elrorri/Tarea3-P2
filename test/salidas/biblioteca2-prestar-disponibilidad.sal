@@ -1,0 +1,2 @@
+principal: principal.cpp:1581: void main_agregarSocioBiblioteca(rep_biblioteca*&, rep_socio*&): Assertion `biblioteca != NULL && socio != NULL' failed.
+timeout: la orden monitorizada ha volcado un 'core'

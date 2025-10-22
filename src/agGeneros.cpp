@@ -154,7 +154,6 @@ int obtenerMaxTAGGeneros(TAGGeneros arbolGeneros) {
     
     int maxActual = arbolGeneros->id;
     
-    // Buscar máximo en los hijos
     TAGGeneros hijo = arbolGeneros->SigHijo;
     while (hijo != NULL) {
         int maxHijo = obtenerMaxTAGGeneros(hijo);
@@ -163,8 +162,6 @@ int obtenerMaxTAGGeneros(TAGGeneros arbolGeneros) {
         }
         hijo = hijo->SigHermano;
     }
-    
-    // Buscar máximo en los hermanos
     TAGGeneros hermano = arbolGeneros->SigHermano;
     while (hermano != NULL) {
         int maxHermano = obtenerMaxTAGGeneros(hermano);
@@ -180,43 +177,39 @@ int obtenerMaxTAGGeneros(TAGGeneros arbolGeneros) {
 void removerGeneroTAGGeneros(TAGGeneros &arbolGeneros, int idGenero){
     if (arbolGeneros == NULL) return;
     
-    // Caso 1: El nodo a eliminar es la raíz
     if (arbolGeneros->id == idGenero) {
         TAGGeneros temp = arbolGeneros;
-        arbolGeneros = arbolGeneros->SigHermano; // La nueva raíz será el hermano
-        liberarAux(temp->SigHijo); // Liberar todos los hijos
+        arbolGeneros = arbolGeneros->SigHermano; 
+        liberarAux(temp->SigHijo); 
         delete temp;
         return;
     }
     
-    // Buscar el nodo en los hijos y hermanos
+
     TAGGeneros actual = arbolGeneros;
     
-    // Buscar en los hermanos de la raíz
+
     while (actual->SigHermano != NULL) {
         if (actual->SigHermano->id == idGenero) {
             TAGGeneros nodoAEliminar = actual->SigHermano;
-            actual->SigHermano = nodoAEliminar->SigHermano; // Saltar el nodo
-            liberarAux(nodoAEliminar->SigHijo); // Liberar todos los hijos del nodo eliminado
+            actual->SigHermano = nodoAEliminar->SigHermano;
+            liberarAux(nodoAEliminar->SigHijo); 
             delete nodoAEliminar;
             return;
         }
         actual = actual->SigHermano;
     }
     
-    // Buscar recursivamente en los hijos
     actual = arbolGeneros;
     while (actual != NULL) {
         if (actual->SigHijo != NULL) {
-            // Si el hijo es el que queremos eliminar
             if (actual->SigHijo->id == idGenero) {
                 TAGGeneros nodoAEliminar = actual->SigHijo;
-                actual->SigHijo = nodoAEliminar->SigHermano; // El primer hijo ahora es el hermano
-                liberarAux(nodoAEliminar->SigHijo); // Liberar hijos del nodo eliminado
-                delete nodoAEliminar;
+                actual->SigHijo = nodoAEliminar->SigHermano; 
+                liberarAux(nodoAEliminar->SigHijo); 
+                 delete nodoAEliminar;
                 return;
             } else {
-                // Buscar recursivamente en el subárbol del hijo
                 removerGeneroTAGGeneros(actual->SigHijo, idGenero);
             }
         }

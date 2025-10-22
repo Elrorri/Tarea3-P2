@@ -1,0 +1,2 @@
+principal: principal.cpp:1574: void main_agregarLibroBiblioteca(TBiblioteca, rep_libro*&): Assertion `biblioteca != NULL && libro != NULL' failed.
+timeout: la orden monitorizada ha volcado un 'core'
