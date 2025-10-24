@@ -1,3 +1,135 @@
+==6944== Invalid read of size 8
+==6944==    at 0x404AA6: liberarTFecha(rep_fecha*&) (fecha.cpp:24)
+==6944==    by 0x404EA9: liberarTLibro(rep_libro*&) (libro.cpp:30)
+==6944==    by 0x406860: liberarTReserva(rep_reserva*&) (reserva.cpp:20)
+==6944==    by 0x406A80: desencolarTColaReservas(rep_colaReservas*&) (colaReservas.cpp:44)
+==6944==    by 0x406B5D: liberarTColaReservas(rep_colaReservas*&) (colaReservas.cpp:74)
+==6944==    by 0x407DB0: liberarTBiblioteca(rep_biblioteca*&) (biblioteca.cpp:148)
+==6944==    by 0x404A3E: main_liberarBiblioteca(rep_biblioteca*) (principal.cpp:1651)
+==6944==    by 0x401A4F: main (principal.cpp:565)
+==6944==  Address 0x4e0f9a0 is 304 bytes inside a block of size 312 free'd
+==6944==    at 0x4842E78: operator delete(void*, unsigned long) (vg_replace_malloc.c:1181)
+==6944==    by 0x404EC2: liberarTLibro(rep_libro*&) (libro.cpp:31)
+==6944==    by 0x40624A: liberarTABBLibros(rep_abbLibros*&) (abbLibros.cpp:37)
+==6944==    by 0x407D9D: liberarTBiblioteca(rep_biblioteca*&) (biblioteca.cpp:147)
+==6944==    by 0x404A3E: main_liberarBiblioteca(rep_biblioteca*) (principal.cpp:1651)
+==6944==    by 0x401A4F: main (principal.cpp:565)
+==6944==  Block was alloc'd at
+==6944==    at 0x483F2AC: operator new(unsigned long) (vg_replace_malloc.c:487)
+==6944==    by 0x404DE9: crearTLibro(int, char const*, char const*, char const*, char const*, int, rep_fecha*) (libro.cpp:16)
+==6944==    by 0x401DF2: main_crearLibro(rep_libro*&, rep_fecha*&) (principal.cpp:656)
+==6944==    by 0x400761: main (principal.cpp:283)
+==6944== 
+==6944== Invalid write of size 8
+==6944==    at 0x404ABF: liberarTFecha(rep_fecha*&) (fecha.cpp:25)
+==6944==    by 0x404EA9: liberarTLibro(rep_libro*&) (libro.cpp:30)
+==6944==    by 0x406860: liberarTReserva(rep_reserva*&) (reserva.cpp:20)
+==6944==    by 0x406A80: desencolarTColaReservas(rep_colaReservas*&) (colaReservas.cpp:44)
+==6944==    by 0x406B5D: liberarTColaReservas(rep_colaReservas*&) (colaReservas.cpp:74)
+==6944==    by 0x407DB0: liberarTBiblioteca(rep_biblioteca*&) (biblioteca.cpp:148)
+==6944==    by 0x404A3E: main_liberarBiblioteca(rep_biblioteca*) (principal.cpp:1651)
+==6944==    by 0x401A4F: main (principal.cpp:565)
+==6944==  Address 0x4e0f9a0 is 304 bytes inside a block of size 312 free'd
+==6944==    at 0x4842E78: operator delete(void*, unsigned long) (vg_replace_malloc.c:1181)
+==6944==    by 0x404EC2: liberarTLibro(rep_libro*&) (libro.cpp:31)
+==6944==    by 0x40624A: liberarTABBLibros(rep_abbLibros*&) (abbLibros.cpp:37)
+==6944==    by 0x407D9D: liberarTBiblioteca(rep_biblioteca*&) (biblioteca.cpp:147)
+==6944==    by 0x404A3E: main_liberarBiblioteca(rep_biblioteca*) (principal.cpp:1651)
+==6944==    by 0x401A4F: main (principal.cpp:565)
+==6944==  Block was alloc'd at
+==6944==    at 0x483F2AC: operator new(unsigned long) (vg_replace_malloc.c:487)
+==6944==    by 0x404DE9: crearTLibro(int, char const*, char const*, char const*, char const*, int, rep_fecha*) (libro.cpp:16)
+==6944==    by 0x401DF2: main_crearLibro(rep_libro*&, rep_fecha*&) (principal.cpp:656)
+==6944==    by 0x400761: main (principal.cpp:283)
+==6944== 
+==6944== Invalid free() / delete / delete[] / realloc()
+==6944==    at 0x4842E78: operator delete(void*, unsigned long) (vg_replace_malloc.c:1181)
+==6944==    by 0x404EC2: liberarTLibro(rep_libro*&) (libro.cpp:31)
+==6944==    by 0x406860: liberarTReserva(rep_reserva*&) (reserva.cpp:20)
+==6944==    by 0x406A80: desencolarTColaReservas(rep_colaReservas*&) (colaReservas.cpp:44)
+==6944==    by 0x406B5D: liberarTColaReservas(rep_colaReservas*&) (colaReservas.cpp:74)
+==6944==    by 0x407DB0: liberarTBiblioteca(rep_biblioteca*&) (biblioteca.cpp:148)
+==6944==    by 0x404A3E: main_liberarBiblioteca(rep_biblioteca*) (principal.cpp:1651)
+==6944==    by 0x401A4F: main (principal.cpp:565)
+==6944==  Address 0x4e0f870 is 0 bytes inside a block of size 312 free'd
+==6944==    at 0x4842E78: operator delete(void*, unsigned long) (vg_replace_malloc.c:1181)
+==6944==    by 0x404EC2: liberarTLibro(rep_libro*&) (libro.cpp:31)
+==6944==    by 0x40624A: liberarTABBLibros(rep_abbLibros*&) (abbLibros.cpp:37)
+==6944==    by 0x407D9D: liberarTBiblioteca(rep_biblioteca*&) (biblioteca.cpp:147)
+==6944==    by 0x404A3E: main_liberarBiblioteca(rep_biblioteca*) (principal.cpp:1651)
+==6944==    by 0x401A4F: main (principal.cpp:565)
+==6944==  Block was alloc'd at
+==6944==    at 0x483F2AC: operator new(unsigned long) (vg_replace_malloc.c:487)
+==6944==    by 0x404DE9: crearTLibro(int, char const*, char const*, char const*, char const*, int, rep_fecha*) (libro.cpp:16)
+==6944==    by 0x401DF2: main_crearLibro(rep_libro*&, rep_fecha*&) (principal.cpp:656)
+==6944==    by 0x400761: main (principal.cpp:283)
+==6944== 
+==6944== Invalid read of size 8
+==6944==    at 0x404AA6: liberarTFecha(rep_fecha*&) (fecha.cpp:24)
+==6944==    by 0x405295: liberarTSocio(rep_socio*&) (socio.cpp:39)
+==6944==    by 0x40586D: liberarTLSESocios(rep_lseSocios*&) (lseSocios.cpp:34)
+==6944==    by 0x407DD6: liberarTBiblioteca(rep_biblioteca*&) (biblioteca.cpp:150)
+==6944==    by 0x404A3E: main_liberarBiblioteca(rep_biblioteca*) (principal.cpp:1651)
+==6944==    by 0x401A4F: main (principal.cpp:565)
+==6944==  Address 0x4e0f3b0 is 48 bytes inside a block of size 144 free'd
+==6944==    at 0x4842E78: operator delete(void*, unsigned long) (vg_replace_malloc.c:1181)
+==6944==    by 0x4052AE: liberarTSocio(rep_socio*&) (socio.cpp:40)
+==6944==    by 0x40686F: liberarTReserva(rep_reserva*&) (reserva.cpp:21)
+==6944==    by 0x406A80: desencolarTColaReservas(rep_colaReservas*&) (colaReservas.cpp:44)
+==6944==    by 0x406B5D: liberarTColaReservas(rep_colaReservas*&) (colaReservas.cpp:74)
+==6944==    by 0x407DB0: liberarTBiblioteca(rep_biblioteca*&) (biblioteca.cpp:148)
+==6944==    by 0x404A3E: main_liberarBiblioteca(rep_biblioteca*) (principal.cpp:1651)
+==6944==    by 0x401A4F: main (principal.cpp:565)
+==6944==  Block was alloc'd at
+==6944==    at 0x483F2AC: operator new(unsigned long) (vg_replace_malloc.c:487)
+==6944==    by 0x40513C: crearTSocio(int, char const*, char const*, unsigned int, unsigned int, unsigned int) (socio.cpp:14)
+==6944==    by 0x4021BE: main_crearSocio(rep_socio*&) (principal.cpp:732)
+==6944==    by 0x400924: main (principal.cpp:310)
+==6944== 
+==6944== Invalid write of size 8
+==6944==    at 0x404ABF: liberarTFecha(rep_fecha*&) (fecha.cpp:25)
+==6944==    by 0x405295: liberarTSocio(rep_socio*&) (socio.cpp:39)
+==6944==    by 0x40586D: liberarTLSESocios(rep_lseSocios*&) (lseSocios.cpp:34)
+==6944==    by 0x407DD6: liberarTBiblioteca(rep_biblioteca*&) (biblioteca.cpp:150)
+==6944==    by 0x404A3E: main_liberarBiblioteca(rep_biblioteca*) (principal.cpp:1651)
+==6944==    by 0x401A4F: main (principal.cpp:565)
+==6944==  Address 0x4e0f3b0 is 48 bytes inside a block of size 144 free'd
+==6944==    at 0x4842E78: operator delete(void*, unsigned long) (vg_replace_malloc.c:1181)
+==6944==    by 0x4052AE: liberarTSocio(rep_socio*&) (socio.cpp:40)
+==6944==    by 0x40686F: liberarTReserva(rep_reserva*&) (reserva.cpp:21)
+==6944==    by 0x406A80: desencolarTColaReservas(rep_colaReservas*&) (colaReservas.cpp:44)
+==6944==    by 0x406B5D: liberarTColaReservas(rep_colaReservas*&) (colaReservas.cpp:74)
+==6944==    by 0x407DB0: liberarTBiblioteca(rep_biblioteca*&) (biblioteca.cpp:148)
+==6944==    by 0x404A3E: main_liberarBiblioteca(rep_biblioteca*) (principal.cpp:1651)
+==6944==    by 0x401A4F: main (principal.cpp:565)
+==6944==  Block was alloc'd at
+==6944==    at 0x483F2AC: operator new(unsigned long) (vg_replace_malloc.c:487)
+==6944==    by 0x40513C: crearTSocio(int, char const*, char const*, unsigned int, unsigned int, unsigned int) (socio.cpp:14)
+==6944==    by 0x4021BE: main_crearSocio(rep_socio*&) (principal.cpp:732)
+==6944==    by 0x400924: main (principal.cpp:310)
+==6944== 
+==6944== Invalid free() / delete / delete[] / realloc()
+==6944==    at 0x4842E78: operator delete(void*, unsigned long) (vg_replace_malloc.c:1181)
+==6944==    by 0x4052AE: liberarTSocio(rep_socio*&) (socio.cpp:40)
+==6944==    by 0x40586D: liberarTLSESocios(rep_lseSocios*&) (lseSocios.cpp:34)
+==6944==    by 0x407DD6: liberarTBiblioteca(rep_biblioteca*&) (biblioteca.cpp:150)
+==6944==    by 0x404A3E: main_liberarBiblioteca(rep_biblioteca*) (principal.cpp:1651)
+==6944==    by 0x401A4F: main (principal.cpp:565)
+==6944==  Address 0x4e0f380 is 0 bytes inside a block of size 144 free'd
+==6944==    at 0x4842E78: operator delete(void*, unsigned long) (vg_replace_malloc.c:1181)
+==6944==    by 0x4052AE: liberarTSocio(rep_socio*&) (socio.cpp:40)
+==6944==    by 0x40686F: liberarTReserva(rep_reserva*&) (reserva.cpp:21)
+==6944==    by 0x406A80: desencolarTColaReservas(rep_colaReservas*&) (colaReservas.cpp:44)
+==6944==    by 0x406B5D: liberarTColaReservas(rep_colaReservas*&) (colaReservas.cpp:74)
+==6944==    by 0x407DB0: liberarTBiblioteca(rep_biblioteca*&) (biblioteca.cpp:148)
+==6944==    by 0x404A3E: main_liberarBiblioteca(rep_biblioteca*) (principal.cpp:1651)
+==6944==    by 0x401A4F: main (principal.cpp:565)
+==6944==  Block was alloc'd at
+==6944==    at 0x483F2AC: operator new(unsigned long) (vg_replace_malloc.c:487)
+==6944==    by 0x40513C: crearTSocio(int, char const*, char const*, unsigned int, unsigned int, unsigned int) (socio.cpp:14)
+==6944==    by 0x4021BE: main_crearSocio(rep_socio*&) (principal.cpp:732)
+==6944==    by 0x400924: main (principal.cpp:310)
+==6944== 
 1>Biblioteca creada exitosamente.
 2>Socio de ci 111 creado exitosamente.
 3>Socio de CI 111 agregado a la biblioteca.
@@ -33,17 +165,3 @@ No retornado
 Reserva de libro El Aleph por Bruno Fernandez.
 27>Biblioteca liberada exitosamente.
 28>Fin.
-==16056== 32 (16 direct, 16 indirect) bytes in 1 blocks are definitely lost in loss record 4 of 6
-==16056==    at 0x483F2AC: operator new(unsigned long) (vg_replace_malloc.c:487)
-==16056==    by 0x40698B: encolarTColaReservas(rep_colaReservas*&, rep_reserva*) (colaReservas.cpp:21)
-==16056==    by 0x407A8D: reservarLibroTBiblioteca(rep_biblioteca*, int, int) (biblioteca.cpp:67)
-==16056==    by 0x404883: main_reservarLibroBiblioteca(rep_biblioteca*) (principal.cpp:1610)
-==16056==    by 0x401932: main (principal.cpp:551)
-==16056== 
-==16056== 136 (24 direct, 112 indirect) bytes in 1 blocks are definitely lost in loss record 6 of 6
-==16056==    at 0x483F2AC: operator new(unsigned long) (vg_replace_malloc.c:487)
-==16056==    by 0x405C02: insertarTLDEPrestamos(rep_ldePrestamos*&, rep_prestamo*) (ldePrestamos.cpp:22)
-==16056==    by 0x40793A: prestarLibroTBiblioteca(rep_biblioteca*, int, int, rep_fecha*) (biblioteca.cpp:35)
-==16056==    by 0x4047B3: main_prestarLibroBiblioteca(rep_biblioteca*, rep_fecha*&) (principal.cpp:1591)
-==16056==    by 0x4018E0: main (principal.cpp:547)
-==16056== 

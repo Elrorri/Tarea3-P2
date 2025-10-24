@@ -14,10 +14,3 @@ No retornado
 15>Cola de Reservas:
 16>Biblioteca liberada exitosamente.
 17>Fin.
-==15999== 68 (24 direct, 44 indirect) bytes in 1 blocks are definitely lost in loss record 3 of 3
-==15999==    at 0x483F2AC: operator new(unsigned long) (vg_replace_malloc.c:487)
-==15999==    by 0x405C02: insertarTLDEPrestamos(rep_ldePrestamos*&, rep_prestamo*) (ldePrestamos.cpp:22)
-==15999==    by 0x40793A: prestarLibroTBiblioteca(rep_biblioteca*, int, int, rep_fecha*) (biblioteca.cpp:35)
-==15999==    by 0x4047B3: main_prestarLibroBiblioteca(rep_biblioteca*, rep_fecha*&) (principal.cpp:1591)
-==15999==    by 0x4018E0: main (principal.cpp:547)
-==15999== 

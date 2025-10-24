@@ -1,5 +1,6 @@
 #include "../include/biblioteca.h"
 #include <assert.h>
+#include <stddef.h> // Para NULL (aunque a veces ya viene incluido)
 
 struct rep_biblioteca {
   TABBLibros Libros;
@@ -53,14 +54,19 @@ bool disponibleLibroTBiblioteca(TBiblioteca biblioteca, int isbnLibro){
     }
     
      // LIBERAR MANUALMENTE LAS COPIAS DE PRÉSTAMOS, SOCIOS Y LIBROS
-  for(nat i=0;cantidadTLDEPrestamos(noDisponibles)==i;i++) {
-    TPrestamo prestamo = obtenerPrimeroTLDEPrestamos(noDisponibles);
-    TSocio socioCopia = socioTPrestamo(prestamo);
-    TLibro libroCopia = libroTPrestamo(prestamo);
-    if (socioCopia != NULL) liberarTSocio(socioCopia);
-    if (libroCopia != NULL) liberarTLibro(libroCopia);
-  }
-  liberarTLDEPrestamos(noDisponibles);
+     // CORRECCIÓN: El bucle debe iterar desde i=1 hasta la cantidadDeNoRetornados, no con la condición 'cantidadTLDEPrestamos(noDisponibles)==i'.
+    for(nat i=1; i <= cantidadDeNoRetornados; i++) {
+        TPrestamo prestamo = obtenerNesimoTLDEPrestamos(noDisponibles, i);
+        // La validación siguiente previene el acceso a 0x0 (SIGSEGV)
+        if (prestamo != NULL) { 
+            TSocio socioCopia = socioTPrestamo(prestamo);
+            TLibro libroCopia = libroTPrestamo(prestamo);
+            // Si son copias profundas, se deben liberar
+            if (socioCopia != NULL) liberarTSocio(socioCopia);
+            if (libroCopia != NULL) liberarTLibro(libroCopia);
+        }
+    }
+    liberarTLDEPrestamos(noDisponibles); // Libera la estructura de lista y sus nodos
     
     return !estaPrestado;
   } 
@@ -96,12 +102,17 @@ void devolverLibroTBiblioteca(TBiblioteca biblioteca, int ciSocio, int isbnLibro
   }
   
   // LIBERAR MANUALMENTE LAS COPIAS DE PRÉSTAMOS, SOCIOS Y LIBROS
-  for(nat i=0;cantidadTLDEPrestamos(noDisponibles)==i;i++) {
-    TPrestamo prestamo = obtenerPrimeroTLDEPrestamos(noDisponibles);
-    TSocio socioCopia = socioTPrestamo(prestamo);
-    TLibro libroCopia = libroTPrestamo(prestamo);
-    if (socioCopia != NULL) liberarTSocio(socioCopia);
-    if (libroCopia != NULL) liberarTLibro(libroCopia);
+  // CORRECCIÓN: Se aplica la misma lógica de corrección que en disponibleLibroTBiblioteca.
+  for(nat i=1; i <= cantidadDeNoRetornados; i++) {
+    TPrestamo prestamo = obtenerNesimoTLDEPrestamos(noDisponibles, i);
+    // La validación siguiente previene el acceso a 0x0 (SIGSEGV)
+    if (prestamo != NULL) {
+        TSocio socioCopia = socioTPrestamo(prestamo);
+        TLibro libroCopia = libroTPrestamo(prestamo);
+        // Si son copias profundas, se deben liberar
+        if (socioCopia != NULL) liberarTSocio(socioCopia);
+        if (libroCopia != NULL) liberarTLibro(libroCopia);
+    }
   }
   liberarTLDEPrestamos(noDisponibles);
 }
