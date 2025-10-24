@@ -78,6 +78,15 @@ void liberarTColaReservas(TColaReservas &colaReservas){
 }
 
 void liberarTColaReservasSoloEstructura(TColaReservas &colaReservas){
+  cola* aBorrar;
+  cola* avanzar;
+  avanzar=colaReservas->primero;
+  while(avanzar!=NULL){
+    aBorrar=avanzar;
+    avanzar=avanzar->sig;
+    liberarTReservaSoloEstructura(aBorrar->reserva);
+    delete aBorrar;
+  }
   delete colaReservas;
   colaReservas = NULL;
 }

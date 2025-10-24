@@ -26,6 +26,13 @@ void imprimirTPrestamo(TPrestamo prestamo){
   }
 }
 
+void liberarTPrestamosSoloEstructura(TPrestamo &prestamo){
+  liberarTFecha(prestamo->fechaDevolucion);
+  liberarTFecha(prestamo->fechaRetiro);
+  delete prestamo;
+  prestamo = NULL;
+}
+
 void liberarTPrestamo(TPrestamo &prestamo) {
   if (prestamo != NULL) {
     // NO liberar libro ni socio aquí: son compartidos y tienen sus propios liberadores
@@ -42,10 +49,6 @@ void liberarTPrestamo(TPrestamo &prestamo) {
   }
 }
 
-void liberarTPrestamosSoloEstructura(TPrestamo &prestamo){
-  delete prestamo;
-  prestamo = NULL;
-}
 
 TSocio socioTPrestamo(TPrestamo prestamo){
   TSocio socio = (prestamo->socio);

@@ -65,6 +65,15 @@ void liberarTLDEPrestamos(TLDEPrestamos &ldePrestamos){
 }
 
 void liberarTLDEPrestamosSoloEstructura(TLDEPrestamos &ldePrestamos){
+    nodoDoble* aBorrar;
+    nodoDoble* avanzar;
+    avanzar=ldePrestamos->inicio;
+    while (avanzar!=NULL) {
+        aBorrar=avanzar;
+        avanzar=avanzar->siguiente; 
+        liberarTPrestamoSoloEstructura(aBorrar->prestamo); 
+        delete aBorrar; 
+    } 
     delete ldePrestamos;
     ldePrestamos = NULL;
 }

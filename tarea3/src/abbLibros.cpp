@@ -1,5 +1,5 @@
-
 #include "../include/abbLibros.h"
+#include <stddef.h>
 
 struct rep_abbLibros {
     TLibro libro;
@@ -80,12 +80,14 @@ nat alturaTABBLibros(TABBLibros abbLibros){
 }
 
 TLibro maxISBNLibroTABBLibros(TABBLibros abbLibros){
+    if (abbLibros == NULL) {
+        return NULL;
+    }
     if (abbLibros->Derecho != NULL) {
         return maxISBNLibroTABBLibros(abbLibros->Derecho);
     } else {
         return abbLibros->libro;
     }   
-    return NULL;
 }
 
 void removerLibroTABBLibros(TABBLibros &abbLibros, int isbn) {
@@ -145,7 +147,7 @@ void obtenerNesimoLibroTABBLibrosAux(TABBLibros abbLibros, int n, int &k, TLibro
 
 TLibro obtenerNesimoLibroTABBLibros(TABBLibros abbLibros, int n){
     int k=0;
-    TLibro res;
+    TLibro res = NULL;
     obtenerNesimoLibroTABBLibrosAux(abbLibros,n,k,res);
     return res;
 }
@@ -155,7 +157,7 @@ void filtradoPGTAux(TABBLibros abbLibros, TABBLibros &filtrado, int genero) {
         return;
     }
     filtradoPGTAux(abbLibros->Izquierdo, filtrado, genero);
-    if (abbLibros->libro != NULL && idGeneroTLibro(abbLibros->libro) == genero) {
+    if (idGeneroTLibro(abbLibros->libro) == genero) {
         TLibro copiaLibro = copiarTLibro(abbLibros->libro);
         insertarLibroTABBLibros(filtrado, copiaLibro);
     }

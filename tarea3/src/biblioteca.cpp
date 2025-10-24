@@ -1,6 +1,9 @@
 #include "../include/biblioteca.h"
 #include <assert.h>
-#include <stddef.h> // Para NULL (aunque a veces ya viene incluido)
+#include <stddef.h>
+
+extern TABBLibros filtradoPorConjuntoDeGenerosTABBLibros(TABBLibros abbLibros, TConjuntoGeneros conjuntoGeneros);
+extern void liberarConjuntoGeneros(TConjuntoGeneros &conjuntoGeneros);
 
 struct rep_biblioteca {
   TABBLibros Libros;
@@ -33,7 +36,8 @@ void prestarLibroTBiblioteca(TBiblioteca biblioteca, int ciSocio, int isbnLibro,
   TLibro Libro = obtenerLibroTABBLibros(biblioteca->Libros, isbnLibro);
   if ((Socio!=NULL)&&(Libro!=NULL)){
   TPrestamo Prestamo = crearTPrestamo(Socio, Libro, fechaPrestamo);
-  insertarTLDEPrestamos(biblioteca->Prestamos, Prestamo);}
+  insertarTLDEPrestamos(biblioteca->Prestamos, Prestamo);
+  }
 }
 
 bool disponibleLibroTBiblioteca(TBiblioteca biblioteca, int isbnLibro){
@@ -53,20 +57,16 @@ bool disponibleLibroTBiblioteca(TBiblioteca biblioteca, int isbnLibro){
       }
     }
     
-     // LIBERAR MANUALMENTE LAS COPIAS DE PRÉSTAMOS, SOCIOS Y LIBROS
-     // CORRECCIÓN: El bucle debe iterar desde i=1 hasta la cantidadDeNoRetornados, no con la condición 'cantidadTLDEPrestamos(noDisponibles)==i'.
     for(nat i=1; i <= cantidadDeNoRetornados; i++) {
         TPrestamo prestamo = obtenerNesimoTLDEPrestamos(noDisponibles, i);
-        // La validación siguiente previene el acceso a 0x0 (SIGSEGV)
         if (prestamo != NULL) { 
             TSocio socioCopia = socioTPrestamo(prestamo);
             TLibro libroCopia = libroTPrestamo(prestamo);
-            // Si son copias profundas, se deben liberar
             if (socioCopia != NULL) liberarTSocio(socioCopia);
             if (libroCopia != NULL) liberarTLibro(libroCopia);
         }
     }
-    liberarTLDEPrestamos(noDisponibles); // Libera la estructura de lista y sus nodos
+    liberarTLDEPrestamos(noDisponibles);
     
     return !estaPrestado;
   } 
@@ -88,28 +88,26 @@ void devolverLibroTBiblioteca(TBiblioteca biblioteca, int ciSocio, int isbnLibro
   nat cantidadDeNoRetornados = cantidadTLDEPrestamos(noDisponibles);
   bool encontrado = false;
   
-  for (nat i = 1; i <= cantidadDeNoRetornados && !encontrado; i++){
-    TPrestamo actual = obtenerNesimoTLDEPrestamos(noDisponibles, i);
-    TLibro libroPrestamo = libroTPrestamo(actual);
-    TSocio socioPrestamo = socioTPrestamo(actual);
+  nat cantidadOriginal = cantidadTLDEPrestamos(biblioteca->Prestamos);
+  
+  for (nat i = 1; i <= cantidadOriginal && !encontrado; i++){
+    TPrestamo original = obtenerNesimoTLDEPrestamos(biblioteca->Prestamos, i);
+    TLibro libroPrestamo = libroTPrestamo(original);
+    TSocio socioPrestamo = socioTPrestamo(original);
     int ciPrestamo = ciTSocio(socioPrestamo);
     int isbnLActual = isbnTLibro(libroPrestamo);
     
     if ((isbnLActual == isbnLibro) && (ciSocio == ciPrestamo)) {
-      actualizarFechaDevolucionTPrestamo(actual, fechaDevolucion);
+      actualizarFechaDevolucionTPrestamo(original, fechaDevolucion);
       encontrado = true;
     }
   }
   
-  // LIBERAR MANUALMENTE LAS COPIAS DE PRÉSTAMOS, SOCIOS Y LIBROS
-  // CORRECCIÓN: Se aplica la misma lógica de corrección que en disponibleLibroTBiblioteca.
   for(nat i=1; i <= cantidadDeNoRetornados; i++) {
     TPrestamo prestamo = obtenerNesimoTLDEPrestamos(noDisponibles, i);
-    // La validación siguiente previene el acceso a 0x0 (SIGSEGV)
     if (prestamo != NULL) {
         TSocio socioCopia = socioTPrestamo(prestamo);
         TLibro libroCopia = libroTPrestamo(prestamo);
-        // Si son copias profundas, se deben liberar
         if (socioCopia != NULL) liberarTSocio(socioCopia);
         if (libroCopia != NULL) liberarTLibro(libroCopia);
     }
@@ -138,18 +136,27 @@ void agregarGeneroABiblioteca(TBiblioteca biblioteca, int idGeneroPadre, int idG
 }
 
 TABBLibros obtenerLibrosDeGenero(TBiblioteca biblioteca, int idGenero) {
-  TABBLibros filtrados = filtradoPorGeneroTABBLibros(biblioteca->Libros, idGenero);
-  return filtrados;
+  TABBLibros Filtrado = crearTABBLibrosVacio();
+  int Cant = cantidadTABBLibros(biblioteca->Libros);
+  TConjuntoGeneros CG = obtenerConjuntoGeneros(biblioteca->Generos,idGenero);
+  for (int i=1;i<=Cant;i++){
+    TLibro Libro=obtenerNesimoLibroTABBLibros(biblioteca->Libros,i);
+    int id = idGeneroTLibro(Libro);
+    if (perteneceTConjuntoGeneros(CG,id)){
+      TLibro copia = copiarTLibro(Libro);
+      insertarLibroTABBLibros(Filtrado,copia);
+    }
+  }
+  liberarTConjuntoGeneros(CG);
+  return Filtrado;
 }
 
 void liberarTBiblioteca(TBiblioteca &biblioteca) {
-  if (biblioteca != NULL) {
     liberarTABBLibros(biblioteca->Libros);
-    liberarTColaReservas(biblioteca->Reservas);   // liberar reservas y sus elementos
-    liberarTLDEPrestamos(biblioteca->Prestamos); // liberar préstamos y sus elementos
-    liberarTLSESocios(biblioteca->Socios);
     liberarTAGGeneros(biblioteca->Generos);
+    liberarTColaReservasSoloEstructura(biblioteca->Reservas);
+    liberarTLSESocios(biblioteca->Socios);
+    liberarTLDEPrestamosSoloEstructura(biblioteca->Prestamos);
     delete biblioteca;
     biblioteca = NULL;
-  }
 }
