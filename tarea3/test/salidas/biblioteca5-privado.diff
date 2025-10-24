@@ -1,0 +1,19 @@
+28c28
+< 15/9/2025
+---
+> No retornado
+35a36,49
+> ==16056== 32 (16 direct, 16 indirect) bytes in 1 blocks are definitely lost in loss record 4 of 6
+> ==16056==    at 0x483F2AC: operator new(unsigned long) (vg_replace_malloc.c:487)
+> ==16056==    by 0x40698B: encolarTColaReservas(rep_colaReservas*&, rep_reserva*) (colaReservas.cpp:21)
+> ==16056==    by 0x407A8D: reservarLibroTBiblioteca(rep_biblioteca*, int, int) (biblioteca.cpp:67)
+> ==16056==    by 0x404883: main_reservarLibroBiblioteca(rep_biblioteca*) (principal.cpp:1610)
+> ==16056==    by 0x401932: main (principal.cpp:551)
+> ==16056== 
+> ==16056== 136 (24 direct, 112 indirect) bytes in 1 blocks are definitely lost in loss record 6 of 6
+> ==16056==    at 0x483F2AC: operator new(unsigned long) (vg_replace_malloc.c:487)
+> ==16056==    by 0x405C02: insertarTLDEPrestamos(rep_ldePrestamos*&, rep_prestamo*) (ldePrestamos.cpp:22)
+> ==16056==    by 0x40793A: prestarLibroTBiblioteca(rep_biblioteca*, int, int, rep_fecha*) (biblioteca.cpp:35)
+> ==16056==    by 0x4047B3: main_prestarLibroBiblioteca(rep_biblioteca*, rep_fecha*&) (principal.cpp:1591)
+> ==16056==    by 0x4018E0: main (principal.cpp:547)
+> ==16056== 

@@ -1,0 +1,49 @@
+1>Se ejecutó 'crearTAGGeneros' exitosamente.
+2>Se ejecutó 'insertarGeneroTAGGeneros' con idGeneroPadre -1 e idGenero 100.
+3>Se ejecutó 'insertarGeneroTAGGeneros' con idGeneroPadre 100 e idGenero 110.
+4>Se ejecutó 'insertarGeneroTAGGeneros' con idGeneroPadre 100 e idGenero 120.
+5>Árbol de géneros:
+100 - Accion
+    120 - Drama
+    110 - Comedia
+6>El género de id 998 NO está incluído en el árbol de géneros.
+7>El género de id 100 está incluído en el árbol de géneros.
+8>Se ejecutó 'insertarGeneroTAGGeneros' con idGeneroPadre 120 e idGenero 121.
+9>Se ejecutó 'insertarGeneroTAGGeneros' con idGeneroPadre 121 e idGenero 122.
+10>Se ejecutó 'insertarGeneroTAGGeneros' con idGeneroPadre 122 e idGenero 123.
+11>Se ejecutó 'insertarGeneroTAGGeneros' con idGeneroPadre 123 e idGenero 124.
+12>Árbol de géneros:
+100 - Accion
+    120 - Drama
+        121 - Terror
+            122 - Historica
+                123 - Romance
+                    124 - Musical
+    110 - Comedia
+13>La altura de del árbol general es: 6.
+14>Existen 7 géneros en el árbol de géneros.
+15>El género de id 123 está incluído en el árbol de géneros.
+16>El género de id 125 NO está incluído en el árbol de géneros.
+17>El género de id 121 fue removido.
+18>Árbol de géneros:
+100 - Accion
+    120 - Drama
+    110 - Comedia
+19>La altura de del árbol general es: 2.
+20>Existen 3 géneros en el árbol de géneros.
+21>El género de id 121 NO está incluído en el árbol de géneros.
+22>El género de id 122 NO está incluído en el árbol de géneros.
+23>El género de id 123 NO está incluído en el árbol de géneros.
+24>El género de id 124 NO está incluído en el árbol de géneros.
+25>Se ejecutó 'insertarGeneroTAGGeneros' con idGeneroPadre 110 e idGenero 201.
+26>Se ejecutó 'insertarGeneroTAGGeneros' con idGeneroPadre 110 e idGenero 202.
+27>Árbol de géneros:
+100 - Accion
+    120 - Drama
+    110 - Comedia
+        202 - Romance
+        201 - Historica
+28>La altura de del árbol general es: 3.
+29>Existen 5 géneros en el árbol de géneros.
+30>Se ejecutó 'liberarTAGGeneros' exitosamente.
+31>Fin.

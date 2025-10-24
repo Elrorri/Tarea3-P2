@@ -1,0 +1,49 @@
+1>Biblioteca creada exitosamente.
+2>Socio de ci 111 creado exitosamente.
+3>Socio de CI 111 agregado a la biblioteca.
+4>Socio de ci 222 creado exitosamente.
+5>Socio de CI 222 agregado a la biblioteca.
+6>Socio de ci 333 creado exitosamente.
+7>Socio de CI 333 agregado a la biblioteca.
+8>Socio de ci 444 creado exitosamente.
+9>Socio de CI 444 agregado a la biblioteca.
+10>11>12>Libro de ISBN 1001 agregado a la biblioteca.
+13>14>15>Libro de ISBN 1002 agregado a la biblioteca.
+16>17>Préstamo del libro 1001 al socio 111 registrado.
+18>19>Préstamo del libro 1002 al socio 222 registrado.
+20>LDE Préstamos:
+Préstamo de libro El Aleph a Ana Garcia.
+1/9/2025
+No retornado
+Préstamo de libro Ficciones a Bruno Fernandez.
+2/9/2025
+No retornado
+21>Reserva del libro 1001 para el socio 222 registrada.
+22>Cola de Reservas:
+Reserva de libro El Aleph por Bruno Fernandez.
+23>24>Devolución del libro 1001 por el socio 111 registrada.
+25>LDE Préstamos:
+Préstamo de libro El Aleph a Ana Garcia.
+1/9/2025
+No retornado
+Préstamo de libro Ficciones a Bruno Fernandez.
+2/9/2025
+No retornado
+26>Cola de Reservas:
+Reserva de libro El Aleph por Bruno Fernandez.
+27>Biblioteca liberada exitosamente.
+28>Fin.
+==16056== 32 (16 direct, 16 indirect) bytes in 1 blocks are definitely lost in loss record 4 of 6
+==16056==    at 0x483F2AC: operator new(unsigned long) (vg_replace_malloc.c:487)
+==16056==    by 0x40698B: encolarTColaReservas(rep_colaReservas*&, rep_reserva*) (colaReservas.cpp:21)
+==16056==    by 0x407A8D: reservarLibroTBiblioteca(rep_biblioteca*, int, int) (biblioteca.cpp:67)
+==16056==    by 0x404883: main_reservarLibroBiblioteca(rep_biblioteca*) (principal.cpp:1610)
+==16056==    by 0x401932: main (principal.cpp:551)
+==16056== 
+==16056== 136 (24 direct, 112 indirect) bytes in 1 blocks are definitely lost in loss record 6 of 6
+==16056==    at 0x483F2AC: operator new(unsigned long) (vg_replace_malloc.c:487)
+==16056==    by 0x405C02: insertarTLDEPrestamos(rep_ldePrestamos*&, rep_prestamo*) (ldePrestamos.cpp:22)
+==16056==    by 0x40793A: prestarLibroTBiblioteca(rep_biblioteca*, int, int, rep_fecha*) (biblioteca.cpp:35)
+==16056==    by 0x4047B3: main_prestarLibroBiblioteca(rep_biblioteca*, rep_fecha*&) (principal.cpp:1591)
+==16056==    by 0x4018E0: main (principal.cpp:547)
+==16056== 

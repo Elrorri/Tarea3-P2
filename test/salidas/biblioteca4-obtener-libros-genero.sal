@@ -1,2 +1,20 @@
-principal: principal.cpp:1574: void main_agregarLibroBiblioteca(TBiblioteca, rep_libro*&): Assertion `biblioteca != NULL && libro != NULL' failed.
+==5235== Invalid read of size 8
+==5235==    at 0x406C4E: insertarGeneroTAGGeneros(rep_agGeneros*&, int, int, char const*) (agGeneros.cpp:31)
+==5235==    by 0x407B6A: agregarGeneroABiblioteca(rep_biblioteca*, int, int, char const*) (biblioteca.cpp:90)
+==5235==    by 0x404634: main_agregarGeneroABiblioteca(rep_biblioteca*) (principal.cpp:1569)
+==5235==    by 0x401850: main (principal.cpp:541)
+==5235==  Address 0x18 is not stack'd, malloc'd or (recently) free'd
+==5235== 
+==5235== 
+==5235== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==5235==  Access not within mapped region at address 0x18
+==5235==    at 0x406C4E: insertarGeneroTAGGeneros(rep_agGeneros*&, int, int, char const*) (agGeneros.cpp:31)
+==5235==    by 0x407B6A: agregarGeneroABiblioteca(rep_biblioteca*, int, int, char const*) (biblioteca.cpp:90)
+==5235==    by 0x404634: main_agregarGeneroABiblioteca(rep_biblioteca*) (principal.cpp:1569)
+==5235==    by 0x401850: main (principal.cpp:541)
+==5235==  If you believe this happened as a result of a stack
+==5235==  overflow in your program's main thread (unlikely but
+==5235==  possible), you can try to increase the size of the
+==5235==  main thread stack using the --main-stacksize= flag.
+==5235==  The main thread stack size used in this run was 8388608.
 timeout: la orden monitorizada ha volcado un 'core'
